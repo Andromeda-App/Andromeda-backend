@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+//change routes
+const userRoutes = require("./userRoutes");
+const petRoutes = require("./petRoutes");
+
+router.use(userRoutes)
+router.use("/api/pets",petRoutes)
+
+module.exports = router;
