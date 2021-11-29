@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
+// const express = require('express');
+// const router = express.Router();
 
-//check cookie
+// //check cookie
 
-router.get('/',(req,res)=>{
-    res.json(req.session);
-})
+// router.get('/',(req,res)=>{
+//     res.json(req.session);
+// })
 
-module.exports = router;
+// module.exports = router;
