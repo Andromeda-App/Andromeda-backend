@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 const router = express.Router();
 const tokenAuth = require("../middleware/tokenAuth")
-const { User,Event } = require("../models");
+const { User, Events } = require("../models");
 
 router.post("/signup", (req, res) => {
   User.create({
@@ -65,7 +65,7 @@ router.get("/profile",tokenAuth, (req,res)=>{
 })
 
 router.get("/api/users/:id/events",(req,res)=>{
-  User.findByPk(req.params.id,{include:[Event]}).then(foundUser=>{
+  User.findByPk(req.params.id,{include:[Events]}).then(foundUser=>{
     res.json(foundUser)
   })
 })
