@@ -27,6 +27,7 @@ router.post("/login", (req, res) => {
   })
     .then(foundUser => {
         if(!foundUser){
+          //encrypting the data so the hacker does not know if it's email or password
             res.status(401).send("incorrect email or password")
         }
         else if(bcrypt.compareSync(req.body.password,foundUser.password)){

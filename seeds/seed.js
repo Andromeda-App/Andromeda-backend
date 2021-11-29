@@ -5,12 +5,28 @@ const seed = async ()=>{
     await sequelize.sync({force:true})
     await User.bulkCreate([
         {
-            email:"joe@joe.joe",
-            password:"password"
+            user_name: "whitneylovesspace",
+            email:"whitney@whitney.whitney",
+            password:"password",
+            zipCode: 90210
         },
         {
-            email:"zach@zach.zach",
-            password:"Password"
+            user_name: "mple06",
+            email:"mv@mv.mv",
+            password:"password",
+            zipCode: 91808
+        },
+        {
+            user_name: "melysspace",
+            email:"melyssa@melyssa.melyssa",
+            password:"password",
+            zipCode: 93043
+        },
+        {
+            user_name: "kellystars",
+            email:"kelly@kelly.kelly",
+            password:"password",
+            zipCode: 53083
         }
     ],{
         individualHooks:true
@@ -18,25 +34,19 @@ const seed = async ()=>{
 
     await Events.bulkCreate([
         {
-            name:"Shiva",
-            species:"cat",
-            age:1,
-            description:"tortoiseshell cat, beautiful coat, very dumb, but sweet.  Likes to eat hair ties.",
-            UserId:1
+            eventType:"meteor shower",
+            dataSource:"taurid",
+            image:"img.png",
         },
         {
-            name:"Bahamut",
-            species:"cat",
-            age:1,
-            description:"sandy tabby.  Very chatty. likes to blink.  Can jump way too high.  Hold world record for highest cat jump",
-            UserId:1
+            eventType:"aurora borealis",
+            dataSource:"taurid",
+            image:"img.png",
         },
         {
-            name:"Belle",
-            species:"dog",
-            age:10,
-            description:"early riser, loves to 'say hi' to the neighbors. ",
-            UserId:2
+            eventType:"stars",
+            dataSource:"taurid",
+            image:"img.png",
         }
     ])
     console.log("seeded")
