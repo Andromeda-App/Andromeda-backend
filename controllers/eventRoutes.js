@@ -4,8 +4,9 @@ const { User, Event } = require("../models");
 const tokenAuth = require("../middleware/tokenAuth");
 const isMyEvent = require("../middleware/isMyEvent");
 
-//route to homepage
+//get all events
 router.get("/", (req, res) => {
+  console.log("welcome")
   Event.findAll()
     .then(events => {
       res.json(events);
