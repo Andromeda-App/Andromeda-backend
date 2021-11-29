@@ -1,14 +1,15 @@
 const User = require("./User");
-const Events = require("./Events");
-const chosenEvents = require("./chosenEvents");
+const Event = require("./Event");
+// const chosenEvent = require("./chosenEvent");
 
-Events.belongsToMany(User, {
-    foreignKey: "user_id"
+Event.belongsToMany(User, {
+    foreignKey: "user_id",
+    through: "chosenEvent"
 })
 
-User.hasMany(Events, {
+User.belongsToMany(Event, {
     onDelete: "CASCADE",
-    through: "chosenEvents"
+    through: "chosenEvent"
 })
 
 // User.hasMany(chosenEvents, {
@@ -17,8 +18,5 @@ User.hasMany(Events, {
 
 module.exports = {
     User,
-    Events,
-    chosenEvents
+    Event,
 }
-
-module.exports = { User, Events, chosenEvents }
