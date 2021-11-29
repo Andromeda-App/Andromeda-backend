@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const {User,Event} = require("../models");
+const {User,Events} = require("../models");
 
 const seed = async ()=>{
     await sequelize.sync({force:true})
@@ -16,7 +16,7 @@ const seed = async ()=>{
         individualHooks:true
     })
 
-    await Event.bulkCreate([
+    await Events.bulkCreate([
         {
             name:"Shiva",
             species:"cat",

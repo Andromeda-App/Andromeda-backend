@@ -27,4 +27,4 @@ Events.init({
     sequelize
 });
 
-module.exports = Pet
+module.exports = Events

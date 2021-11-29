@@ -1,6 +1,6 @@
 const User = require("./User");
 const Events = require("./Events");
-const chosenEvents = require("./chosenEvents");
+// const chosenEvents = require("./chosenEvents");
 
 Events.belongsToMany(User, {
     foreignKey: "user_id"
