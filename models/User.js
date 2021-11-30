@@ -36,6 +36,13 @@ User.init({
         validate: {
             len: [5],
         }
+    },
+    lat:    {
+        type:DataTypes.DOUBLE,
+    
+    },
+    long:    {
+        type:DataTypes.DOUBLE,
     }
 }, {
     sequelize,
