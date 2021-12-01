@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 const router = express.Router();
 const tokenAuth = require("../middleware/tokenAuth")
 const { User, Event } = require("../models");
+const getLocation = require("./api/zipCode");
 
 //user signup route
 router.post("/signup", (req, res) => {
@@ -16,6 +17,11 @@ router.post("/signup", (req, res) => {
   })
     .then(newUser => {
       res.json(newUser);
+      // TODO
+      // Call zipCode API here and assign a latitude and longitude to the user data
+      if (newUser.zipCode.length == 5 && /^[0-9]+$/.test(zipcode)){
+        getLocation(newUser.zipCode);
+      }
     })
     .catch(err => {
       console.log(err);
