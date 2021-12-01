@@ -20,7 +20,7 @@ router.post("/signup", (req, res) => {
       // TODO
       // Call zipCode API here and assign a latitude and longitude to the user data
       if (newUser.zipCode.length == 5 && /^[0-9]+$/.test(zipcode)){
-        getLocation(newUser.zipCode);
+        getLocation(newUser);
       }
     })
     .catch(err => {
