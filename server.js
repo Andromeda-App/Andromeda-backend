@@ -11,11 +11,11 @@ require('dotenv').config();
 // =============================================================
 const app = express();
 //LOCAL
-app.use(cors())
+// app.use(cors())
 //DEPLOYED
-// app.use(cors({
-//     origin:["https://reactauthdemo-front.herokuapp.com"]
-// }))
+app.use(cors({
+    origin:[process.env.REQUEST_URL]
+}))
 const PORT = process.env.PORT || 3001;
 // Requiring our models for syncing
 const { User , Event} = require('./models');
