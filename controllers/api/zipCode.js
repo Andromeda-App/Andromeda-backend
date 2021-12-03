@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { User, Event } = require("../models");
-const tokenAuth = require("../middleware/tokenAuth");
-const isMyEvent = require("../middleware/isMyEvent");
+const { User, Event } = require("../../models");
+const tokenAuth = require("../../middleware/tokenAuth");
+const isMyEvent = require("../../middleware/isMyEvent");
 
 // Set up event handlers
 // Connect this api bit to the input form on the signup page
