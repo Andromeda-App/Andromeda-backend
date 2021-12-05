@@ -9,27 +9,63 @@ require("dotenv").config();
 
 //user signup route
 router.post("/signup", (req, res) => {
-  console.log(req)
-  User.create({
-    user_name: req.body.user_name,
-    email: req.body.email,
-    password: req.body.password,
-    zipCode: req.body.zipCode,
-    lat: "",
-    long: ""
-  })
-    .then(newUser => {
-      res.json(newUser);
-      // TODO
-      // Call zipCode API here and assign a latitude and longitude to the user data
-      if (newUser.zipCode.length == 5 && /^[0-9]+$/.test(zipcode)){
-        getLocation(newUser);
-      }
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ err });
-    });
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then((foundUser)=>{
+    if(foundUser) {
+      res.status(403).send("User exists - please login instead.")
+    } else {
+      User.create({
+        user_name: req.body.user_name,
+        email: req.body.email,
+        password: req.body.password,
+        zipCode: req.body.zipCode,
+        lat: "47",
+        long: "122",
+      })
+        .then((newUser) => { 
+          //     // TODO
+          //     // Call zipCode API here and assign a latitude and longitude to the user data
+          //     // if (newUser.zipCode.length == 5 && /^[0-9]+$/.test(zipcode)){
+          //     //   getLocation(newUser);
+          //     // }
+          res.json(newUser);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ err });
+        });
+    }
+  }).catch((err) => {
+    console.log(err);
+    res.status(500).json({ err });
+  });
+
+
+
+  // console.log(req)
+  // User.create({
+  //   user_name: req.body.user_name,
+  //   email: req.body.email,
+  //   password: req.body.password,
+  //   zipCode: req.body.zipCode,
+  //   lat: "47",
+  //   long: "122",
+  // })
+  //   .then(newUser => {
+  //     res.json(newUser);
+  //     // TODO
+  //     // Call zipCode API here and assign a latitude and longitude to the user data
+  //     // if (newUser.zipCode.length == 5 && /^[0-9]+$/.test(zipcode)){
+  //     //   getLocation(newUser);
+  //     // }
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //     res.status(500).json({ err });
+  //   });
 });
 
 //user login route
