@@ -1,4 +1,4 @@
-const loginForm = document.querySelector("#login-form");
+const loginForm = document.querySelector("#loginForm");
 
 //hide new post button
 
@@ -9,10 +9,10 @@ newPost.classList.toggle("hide");
 loginForm.addEventListener("submit",(e)=>{
     e.preventDefault();
     const userObj={
-        email:document.querySelector("#email").value,
-        password:document.querySelector("#password").value,
+        email:document.querySelector("#loginEmail").value,
+        password:document.querySelector("#loginPassword").value,
     }
-    fetch("/api/users/login",{
+    fetch("/users/login",{
         method:"POST",
         body:JSON.stringify(userObj),
         headers:{
@@ -20,7 +20,7 @@ loginForm.addEventListener("submit",(e)=>{
         }
     }).then(res=>{
         if(res.ok){
-           location.href = "/dashboard"
+           location.href = "/profile"
         } else {
             alert("Wrong email and/or password")
         }
