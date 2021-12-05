@@ -1,4 +1,4 @@
-const signupForm = document.querySelector("#signup-form");
+const signupForm = document.querySelector("#SignupForm");
 
 //hides new post button
 
@@ -9,11 +9,12 @@ newPost.classList.toggle("hide");
 signupForm.addEventListener("submit",(e)=>{
     e.preventDefault();
     const userObj={
-        username:document.querySelector("#username").value,
-        password:document.querySelector("#password").value,
-        email:document.querySelector("#email").value,
+        user_name:document.querySelector("#usernameSignup").value,
+        password:document.querySelector("#passwordSignup").value,
+        zipCode:document.querySelector("#zipcodeSignup").value,
+        email:document.querySelector("#emailSignup").value,
     }
-    fetch("/api/users",{
+    fetch("/users/signup",{
         method:"POST",
         body:JSON.stringify(userObj),
         headers:{
@@ -22,10 +23,12 @@ signupForm.addEventListener("submit",(e)=>{
     }).then(res=>{
         if(res.ok){
             const userObj={
+                // zipCode:document.querySelector("#zipcodeSignup").value,
+                // user_name:document.querySelector("#usernameSignup").value,
                 email:document.querySelector("#email").value,
                 password:document.querySelector("#password").value,
             }
-            fetch("/api/users/login",{
+            fetch("/users/login",{
                 method:"POST",
                 body:JSON.stringify(userObj),
                 headers:{
@@ -33,7 +36,7 @@ signupForm.addEventListener("submit",(e)=>{
                 }
             }).then(res=>{
                 if(res.ok){
-                   location.href = "/dashboard"}})
+                   location.href = "/profile"}})
         } else {
             alert("error")
         }
