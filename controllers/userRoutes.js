@@ -5,6 +5,7 @@ const router = express.Router();
 const tokenAuth = require("../middleware/tokenAuth")
 const { User, Event } = require("../models");
 const getLocation = require("./api/zipCode");
+require("dotenv").config();
 
 //user signup route
 router.post("/signup", (req, res) => {
@@ -14,6 +15,8 @@ router.post("/signup", (req, res) => {
     email: req.body.email,
     password: req.body.password,
     zipCode: req.body.zipCode,
+    lat: "",
+    long: ""
   })
     .then(newUser => {
       res.json(newUser);
